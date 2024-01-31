@@ -39,6 +39,17 @@ app.get('/namelength/:name', (req, res) => {
   res.json(`The name length of the name is ${len.length}!`)
 })
 
+app.get('/fruits', (req, res) => {
+  res.send(fruits)
+})
+
+app.get('/fruits/:name', (req, res) => {
+  const sel = fruits.find((fruit) => {
+    return fruit.name === req.params.name
+  })
+  res.send(sel)
+})
+
 app.listen(PORT, () => {
   console.log(`serving up delicious fruits on ${PORT}`)
 })
